@@ -1,0 +1,88 @@
+.navigation {
+  position: sticky;
+  top: 0;
+  width: 20%;
+  min-width: max-content;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  transition: position 0.2s ease;
+  z-index: 1;
+}
+
+.navigation.dark {
+  background-color: var(--dark-bg);
+}
+
+.navigation.active {
+  width: max-content;
+}
+
+.navigation header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--very-dark);
+  padding: 1rem;
+  padding-bottom: 3rem;
+}
+
+.navigation header .logo {
+  width: 40px;
+}
+
+.navigation.active header .logo {
+  margin: 0 auto;
+}
+
+.navigation header h1 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.navigation.dark header h1 {
+  color: var(--very-light);
+}
+
+.navigation header h1 span {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.navigation.active header h1 {
+  display: none;
+}
+
+.navigation .menu {
+  position: absolute;
+  right: -1rem;
+  top: 4rem;
+  cursor: pointer;
+  color: var(--very-dark);
+  z-index: 100;
+  background-color: var(--very-light);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 4px 3px 5px var(--primay-gray\24);
+  transition: rotate 0.2s ease;
+}
+
+.navigation.active .menu {
+  rotate: 180deg;
+  box-shadow: 4px -3px 5px var(--primay-gray\24);
+  right: -2rem;
+}
+
+.navigation .line {
+  position: relative;
+  width: 90%;
+  height: 1px;
+  background-color: var(--primary-color);
+  margin: 0 auto;
+}

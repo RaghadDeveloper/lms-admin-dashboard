@@ -1,0 +1,18 @@
+.main-page {
+  background-color: var(--very-light);
+  display: flex;
+  color: var(--very-dark);
+}
+
+.main-page.dark {
+  background-color: var(--very-dark-bg);
+  color: var(--very-light);
+}
+
+.main-page main {
+  width: 100%;
+}
+
+.main-page .content {
+  padding: 1.5rem;
+}
