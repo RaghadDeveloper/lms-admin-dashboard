@@ -6,12 +6,14 @@ import { MdSwapHoriz } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 import Logo from "./../../assets/images/logo.png";
 import { navigationData } from "../../data/navigationData";
+import { useTheme } from "../../context/ThemeContext";
 
 function Navigation() {
   const [nav, setNav] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className={`navigation ${nav ? "active" : ""} `}>
+    <div className={`navigation ${nav ? "active" : ""} ${theme}`}>
       <span className="menu" onClick={() => setNav((prev) => !prev)}>
         <FiChevronLeft />
       </span>
@@ -31,7 +33,13 @@ function Navigation() {
 
       <div className="line"></div>
 
-      <Nav Icon={MdSwapHoriz} title={"Switch To Light Mode"} />
+      <Nav
+        Icon={MdSwapHoriz}
+        title={`${
+          theme === "light" ? "Switch To Dark Mode" : "Switch To Light Mode"
+        }`}
+        onClick={toggleTheme}
+      />
       <Nav Icon={HiOutlineLogout} title={"Logout"} />
     </div>
   );
