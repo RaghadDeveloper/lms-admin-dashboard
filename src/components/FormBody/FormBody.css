@@ -1,0 +1,8 @@
+.form-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  min-width: 450px;
+}

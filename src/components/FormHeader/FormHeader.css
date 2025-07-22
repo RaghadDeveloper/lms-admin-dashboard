@@ -1,0 +1,20 @@
+.form-header {
+  max-width: 450px;
+}
+
+.form-header h2 {
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--very-dark);
+  margin-bottom: 2rem;
+}
+
+.form-header h2 span {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.form-header p {
+  margin-bottom: 1.5rem;
+  color: var(--primary-dark);
+}

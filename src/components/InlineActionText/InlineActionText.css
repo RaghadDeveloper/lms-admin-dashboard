@@ -1,0 +1,10 @@
+.question {
+  color: var(--very-dark);
+}
+
+.question a,
+.verification p span {
+  text-decoration: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
