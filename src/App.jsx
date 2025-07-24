@@ -15,6 +15,9 @@ import Courses from "./pages/Courses/Courses";
 import Messages from "./pages/Messages/Messages";
 import Notifications from "./pages/Notifications/Notifications";
 import Articles from "./pages/Articles/Articles";
+import CourseDetails from "./pages/CourseDetails/CourseDetails";
+import CourseInfo from "./components/CourseInfo/CourseInfo";
+
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setAuthFromToken } from "./features/auth/authSlice";
@@ -42,6 +45,9 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="/courses">
               <Route index element={<Courses />} />
+              <Route path=":courseId" element={<CourseDetails />}>
+                <Route index element={<CourseInfo />} />
+              </Route>
             </Route>
             <Route path="/messages" element={<Messages />} />
             <Route path="/notifications" element={<Notifications />} />

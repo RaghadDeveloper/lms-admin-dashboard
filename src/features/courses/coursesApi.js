@@ -9,3 +9,6 @@ export const filterCoursesApi = (filters) => {
 
 export const searchCoursesApi = (data) =>
   axiosInstance.post(`course/search`, data);
+
+export const getCourseDetailsApi = (courseId) =>
+  axiosInstance.get(`/course/details/${courseId}`);

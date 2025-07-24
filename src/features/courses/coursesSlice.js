@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { filterCourses, getAllCourses, searchCourses } from "./coursesThunk";
+import {
+  filterCourses,
+  getAllCourses,
+  getCourseDetails,
+  searchCourses,
+} from "./coursesThunk";
 
 const initialState = {
   loading: false,
@@ -59,7 +64,15 @@ const courseSlice = createSlice({
         state.loading = false;
         state.courses = action.payload.data;
       })
-      .addCase(searchCourses.rejected, handleRejected);
+      .addCase(searchCourses.rejected, handleRejected)
+
+      // getCourseDetails
+      .addCase(getCourseDetails.pending, handlePending)
+      .addCase(getCourseDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.course = action.payload.data;
+      })
+      .addCase(getCourseDetails.rejected, handleRejected);
   },
 });
 
