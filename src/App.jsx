@@ -15,8 +15,19 @@ import Courses from "./pages/Courses/Courses";
 import Messages from "./pages/Messages/Messages";
 import Notifications from "./pages/Notifications/Notifications";
 import Articles from "./pages/Articles/Articles";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setAuthFromToken } from "./features/auth/authSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(setAuthFromToken(token));
+    }
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <Routes>
