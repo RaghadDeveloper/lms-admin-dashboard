@@ -13,6 +13,7 @@
 .courses-page-header h1 {
   font-size: 2rem;
   font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
 .courses-page-header button {
@@ -21,9 +22,15 @@
   width: 166px;
 }
 
+.courses-page-header div form,
 .courses-page-header div div {
   display: flex;
   gap: 1rem;
+}
+
+.courses-page-header div form .btn {
+  width: fit-content;
+  padding: 0.5rem 1rem;
 }
 
 .courses-page-header div input {

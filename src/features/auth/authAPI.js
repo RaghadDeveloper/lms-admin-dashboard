@@ -1,9 +1,6 @@
 import axiosInstance from "../../api/axiosInstance";
 
-export const signupAPI = (data) =>
-  axiosInstance.post("/teacher/register", data);
-
-export const loginAPI = (data) => axiosInstance.post("/login", data);
+export const loginAPI = (data) => axiosInstance.post("/admin/login", data);
 
 export const verificationAPI = (data) =>
   axiosInstance.post("/email/verification", data);

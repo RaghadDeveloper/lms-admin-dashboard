@@ -30,6 +30,11 @@
   font-weight: 400;
 }
 
+.course-card h5 {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
 .course-card div {
   display: flex;
   justify-content: space-between;

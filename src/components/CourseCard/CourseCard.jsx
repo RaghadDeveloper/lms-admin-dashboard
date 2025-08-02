@@ -11,6 +11,7 @@ function CourseCard({ course }) {
     category,
     rating,
     title,
+    teacher,
     subscribers_count,
     price,
     approval_status,
@@ -29,6 +30,7 @@ function CourseCard({ course }) {
       </div>
       <div className="title">
         <h3>{title}</h3>
+        <h5>{teacher?.teacher_name}</h5>
         <p className={`approval ${approval_status}`}>{approval_status}</p>
         <div className="line"></div>
       </div>

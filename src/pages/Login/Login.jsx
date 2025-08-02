@@ -93,9 +93,6 @@ function Login() {
         <Button type="submit" className={"primary"} disabled={loading}>
           {loading ? "Logging in..." : "Log in"}
         </Button>
-        <InlineActionText>
-          Don't have an account? <Link to={"/signup"}>Sign up</Link>
-        </InlineActionText>
 
         {formErrors.email && <ErrorMessage error={formErrors.email} />}
         {formErrors.password && <ErrorMessage error={formErrors.password} />}

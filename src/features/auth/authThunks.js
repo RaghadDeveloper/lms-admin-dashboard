@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   loginAPI,
-  signupAPI,
   logoutAPI,
   resetPasswordAPI,
   verificationAPI,
@@ -16,19 +15,6 @@ const extractError = (error) => {
     }
   );
 };
-
-export const signup = createAsyncThunk(
-  "auth/signup",
-  async (data, thunkAPI) => {
-    try {
-      const response = await signupAPI(data);
-      localStorage.setItem("token", response.data.data.token);
-      return response.data;
-    } catch (err) {
-      return thunkAPI.rejectWithValue(extractError(err));
-    }
-  }
-);
 
 export const login = createAsyncThunk("auth/login", async (data, thunkAPI) => {
   try {
@@ -91,9 +77,7 @@ export const forgotPassword = createAsyncThunk(
   "auth/forgotPassword",
   async (data, thunkAPI) => {
     try {
-      console.log(data);
       const response = await forgotPasswordAPI(data);
-      console.log(data);
       localStorage.setItem("token", response.data.data.token);
       return response.data;
     } catch (err) {

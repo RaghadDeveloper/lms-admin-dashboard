@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   login,
-  signup,
   logout,
   resetPassword,
   verification,
@@ -60,14 +59,6 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
       })
       .addCase(login.rejected, handleRejected);
-    builder
-      .addCase(signup.pending, handlePending)
-      .addCase(signup.fulfilled, (state, action) => {
-        state.loading = false;
-        state.user = action.payload.data.user;
-        state.isAuthenticated = true;
-      })
-      .addCase(signup.rejected, handleRejected);
 
     builder
       .addCase(logout.pending, handlePending)
