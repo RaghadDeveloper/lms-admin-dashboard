@@ -1,0 +1,54 @@
+.rejection-form {
+  background-color: white;
+  border: 1px solid var(--primay-gray\24);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 500px;
+  gap: 1rem;
+  position: absolute;
+  top: calc((100vh - 60px - 3rem) / 2);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 10px 10px var(--primay-gray\24);
+  z-index: 3;
+}
+
+.dark .rejection-form {
+  background-color: var(--dark-bg);
+}
+
+.rejection-form > div {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 0.5rem;
+}
+
+.rejection-form textarea {
+  height: 150px;
+  resize: none;
+  padding: 0.8rem;
+  font-size: 1rem;
+  background: transparent;
+  border: 1px solid var(--primay-gray\24);
+  border-radius: 4px;
+}
+
+.dark .rejection-form textarea {
+  color: var(--very-light);
+}
+
+.rejection-form textarea:focus {
+  outline: none;
+  border: 1px solid var(--primary-color);
+}
+
+.rejection-form span {
+  cursor: pointer;
+}
+
+.rejection-form .btn.rejected {
+  width: fit-content;
+  align-self: end;
+}

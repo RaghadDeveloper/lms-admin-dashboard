@@ -3,6 +3,7 @@ import {
   filterCourses,
   getAllCourses,
   getCourseDetails,
+  reviewCourse,
   searchCourses,
 } from "./coursesThunk";
 
@@ -72,7 +73,23 @@ const courseSlice = createSlice({
         state.loading = false;
         state.course = action.payload.data;
       })
-      .addCase(getCourseDetails.rejected, handleRejected);
+      .addCase(getCourseDetails.rejected, handleRejected)
+
+      // reviewCourse
+      .addCase(reviewCourse.pending, handlePending)
+      .addCase(reviewCourse.fulfilled, (state, action) => {
+        state.loading = false;
+        state.courses = state.courses.map((course) =>
+          course.id === action.payload.data.id
+            ? {
+                ...course,
+                approval_status: action.payload.data.approval_status,
+              }
+            : course
+        );
+        state.course = action.payload.data;
+      })
+      .addCase(reviewCourse.rejected, handleRejected);
   },
 });
 

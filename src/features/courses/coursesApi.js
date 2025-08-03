@@ -12,3 +12,10 @@ export const searchCoursesApi = (data) =>
 
 export const getCourseDetailsApi = (courseId) =>
   axiosInstance.get(`/course/details/${courseId}`);
+
+export const reviewCourseApi = ({ courseId, data }) =>
+  axiosInstance.post(`/course/review/${courseId}`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });

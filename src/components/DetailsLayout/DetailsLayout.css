@@ -18,6 +18,11 @@
   margin-bottom: 0.5rem;
 }
 
+.details-layout .category::first-letter,
+.details-layout .title::first-letter {
+  text-transform: uppercase;
+}
+
 .dark .details-layout {
   color: var(--very-light);
 }

@@ -10,17 +10,34 @@
   color: var(--very-light);
 }
 
-.video-card > div {
+.video-card .title {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 0.5rem;
+  align-items: start;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.video-card .title h4::first-letter {
+  text-transform: uppercase;
 }
 
 .video-card .details {
-  margin-left: 1rem;
-  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1.5rem;
 }
 
 .video-card:hover {
   background-color: var(--secondary-gray\36);
+}
+
+.course-details:has(.course-info.disable) .course-content .video-card {
+  cursor: auto;
+}
+
+.course-details:has(.course-info.disable) .course-content .video-card:hover {
+  background: transparent;
 }

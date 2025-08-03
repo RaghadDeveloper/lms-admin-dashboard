@@ -13,10 +13,11 @@ function VideoCard({ num, lesson }) {
   const { id, title, video_duration, is_free } = lesson;
   return (
     <div className="video-card" onClick={() => navigate(`lesson/${id}`)}>
-      <h4>
+      <div className="title">
         <span>{num}. </span>
-        {title}
-      </h4>
+        <h4>{title}</h4>
+      </div>
+
       <div className="details">
         <p>Duration: {formatTime(video_duration)}</p>
         <p>{is_free ? "Free" : ""}</p>

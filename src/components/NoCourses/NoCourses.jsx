@@ -1,19 +1,15 @@
 import "./NoCourses.css";
-import noCourses from "./../../assets/images/noCourses.png";
-import Button from "../Button/Button";
-import { useNavigate } from "react-router-dom";
+import noCourses from "./../../assets/images/noResults.png";
 
 function NoCourses() {
-  const navigate = useNavigate();
   return (
     <div className="no-courses">
       <img src={noCourses} alt="No Courses img" />
+      <p>There are currently no courses on the platform :(</p>
       <p>
-        You haven’t created any courses yet. Start by creating your first one!
+        Courses will appear here once they have been created by authorized
+        instructors or content managers.
       </p>
-      <Button className={"border"} onClick={() => navigate("create")}>
-        Create a course
-      </Button>
     </div>
   );
 }

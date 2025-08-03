@@ -35,6 +35,11 @@
   font-weight: 300;
 }
 
+.course-card h3::first-letter,
+.course-card h5::first-letter {
+  text-transform: uppercase;
+}
+
 .course-card div {
   display: flex;
   justify-content: space-between;

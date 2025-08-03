@@ -1,7 +1,12 @@
 import "./CourseInfo.css";
-import { FaRegUser, FaStar } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import InfoBlock from "../InfoBlock/InfoBlock";
+import Button from "../Button/Button";
+import { reviewCourse } from "../../features/courses/coursesThunk";
+import { useState } from "react";
+import RejectForm from "../RejectForm/RejectForm";
+import Loader from "../Loader/Loader";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function formatTime(timeStr) {
   const [hours, minutes] = timeStr.split(":").map(Number);
@@ -11,9 +16,24 @@ function formatTime(timeStr) {
 }
 
 function CourseInfo() {
-  const { course } = useSelector((state) => state.courses);
+  const dispatch = useDispatch();
+  const { loading, error, course } = useSelector((state) => state.courses);
+  const [reviewData, setReviewData] = useState({
+    approval_status: "approved",
+    rejection_notes: "",
+  });
+
+  const handleCourseApprove = () => {
+    setReviewData({ approval_status: "approved" });
+    dispatch(reviewCourse({ courseId: id, data: reviewData }));
+  };
+  const handleCourseReject = () => {
+    console.log(reviewData);
+    dispatch(reviewCourse({ courseId: id, data: reviewData }));
+  };
 
   const {
+    id,
     image_url,
     requirements_to_start,
     description,
@@ -27,49 +47,83 @@ function CourseInfo() {
     rejection_notes,
   } = course;
 
+  if (loading) return <Loader />;
+  if (error) return <ErrorMessage />;
+
   return (
-    <div className="course-info">
-      <img src={image_url} alt="Course Img" />
+    <>
+      <div
+        className={`course-info ${
+          reviewData.approval_status === "rejected" ? "disable" : ""
+        }`}
+      >
+        <img src={image_url} alt="Course Img" />
 
-      <div className="about">
-        <h4>Requirement to Start</h4>
-        <p>{requirements_to_start}</p>
-      </div>
-
-      <div className="about">
-        <h4>Description</h4>
-        <p>{description}</p>
-      </div>
-
-      {tags.length > 0 && (
         <div className="about">
-          <h4>Tags</h4>
-          <div className="tags">
-            {tags.map((tag, index) => (
-              <p key={index}>{tag}</p>
-            ))}
+          <h4>Requirement to Start</h4>
+          <pre>{requirements_to_start}</pre>
+        </div>
+
+        <div className="about">
+          <h4>Description</h4>
+          <pre>{description}</pre>
+        </div>
+
+        {tags.length > 0 && (
+          <div className="about">
+            <h4>Tags</h4>
+            <div className="tags">
+              {tags.map((tag, index) => (
+                <p key={index}>{tag}</p>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {approval_status === "rejected" && (
-        <div className="about">
-          <h4>Rejection notes</h4>
-          <p>{rejection_notes}</p>
-        </div>
-      )}
+        {approval_status === "rejected" && (
+          <div className="about">
+            <h4>Rejection notes</h4>
+            <pre>{rejection_notes}</pre>
+          </div>
+        )}
 
-      <div className="row">
-        <InfoBlock
-          label={"price"}
-          value={price === "Free" ? price : `$${price}`}
-        />
-        <InfoBlock label={"Duration"} value={formatTime(course_duration)} />
-        <InfoBlock label={"Lessons"} value={lessons_count} />
-        <InfoBlock label={"Rating"} value={rating} />
-        <InfoBlock label={"Students"} value={subscribers_count} />
+        <div className="row">
+          <InfoBlock
+            label={"price"}
+            value={price === "Free" ? price : `$${price}`}
+          />
+          <InfoBlock label={"Duration"} value={formatTime(course_duration)} />
+          <InfoBlock label={"Lessons"} value={lessons_count} />
+          <InfoBlock label={"Rating"} value={rating} />
+          <InfoBlock label={"Students"} value={subscribers_count} />
+        </div>
       </div>
-    </div>
+      {approval_status === "pending" && (
+        <div className="buttons-container">
+          <Button className={"approved"} onClick={handleCourseApprove}>
+            Approve
+          </Button>
+          <Button
+            className={"rejected"}
+            onClick={() =>
+              setReviewData((reviewData) => ({
+                ...reviewData,
+                approval_status: "rejected",
+              }))
+            }
+          >
+            Reject
+          </Button>
+        </div>
+      )}
+      {reviewData.approval_status === "rejected" && (
+        <RejectForm
+          onSubmit={handleCourseReject}
+          reviewData={reviewData}
+          setReviewData={setReviewData}
+        />
+      )}
+    </>
   );
 }
 
