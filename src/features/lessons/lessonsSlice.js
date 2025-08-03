@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  createLesson,
-  getAllLessons,
-  getLessonDetails,
-  updateLesson,
-} from "./lessonsThunk";
+import { getAllLessons, getLessonDetails } from "./lessonsThunk";
 
 const initialState = {
   loading: false,
@@ -57,27 +52,7 @@ const lessonsSlice = createSlice({
         state.loading = false;
         state.lesson = action.payload.data;
       })
-      .addCase(getLessonDetails.rejected, handleRejected)
-
-      // createLesson
-      .addCase(createLesson.pending, handlePending)
-      .addCase(createLesson.fulfilled, (state, action) => {
-        state.loading = false;
-        state.lesson = action.payload.data;
-        state.lessons.push(action.payload.data);
-      })
-      .addCase(createLesson.rejected, handleRejected)
-
-      // updateLesson
-      .addCase(updateLesson.pending, handlePending)
-      .addCase(updateLesson.fulfilled, (state, action) => {
-        state.loading = false;
-        state.lesson = action.payload.data;
-        state.lessons = state.lessons.map((lesson) =>
-          lesson.id === action.payload.data.id ? action.payload.data : lesson
-        );
-      })
-      .addCase(updateLesson.rejected, handleRejected);
+      .addCase(getLessonDetails.rejected, handleRejected);
   },
 });
 

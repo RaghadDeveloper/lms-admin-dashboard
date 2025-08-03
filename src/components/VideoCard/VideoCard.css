@@ -5,9 +5,17 @@
   cursor: pointer;
 }
 
+.video-card:last-child {
+  border-bottom: none;
+}
+
 .dark .video-card {
   background-color: var(--dark-bg);
   color: var(--very-light);
+}
+
+.video-card.active {
+  background-color: var(--very-light);
 }
 
 .video-card .title {
@@ -30,7 +38,8 @@
   margin-left: 1.5rem;
 }
 
-.video-card:hover {
+.video-card:hover,
+.dark .video-card.active {
   background-color: var(--secondary-gray\36);
 }
 

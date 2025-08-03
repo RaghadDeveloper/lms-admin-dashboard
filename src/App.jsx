@@ -20,6 +20,7 @@ import CourseInfo from "./components/CourseInfo/CourseInfo";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setAuthFromToken } from "./features/auth/authSlice";
+import LessonInfo from "./components/LessonInfo/LessonInfo";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function App() {
               <Route index element={<Courses />} />
               <Route path=":courseId" element={<CourseDetails />}>
                 <Route index element={<CourseInfo />} />
+                <Route path="lesson/:lessonId" element={<LessonInfo />} />
               </Route>
             </Route>
             <Route path="/messages" element={<Messages />} />
