@@ -1,0 +1,31 @@
+.users .filter-users {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.users .filter-users .select-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.users .filter-users input {
+  min-width: 300px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--very-dark);
+}
+
+.users .filter-users input:focus {
+  outline: none;
+  border: 1px solid var(--primary-color);
+}
+
+.users .filter-users .select-container select {
+  min-width: 200px;
+  background-color: white;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--very-dark);
+}

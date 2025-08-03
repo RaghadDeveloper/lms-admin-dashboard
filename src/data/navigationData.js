@@ -1,8 +1,6 @@
-import { AiOutlineUser } from "react-icons/ai";
-import { FaBookOpen } from "react-icons/fa";
+import { FaBookOpen, FaUsers } from "react-icons/fa";
 import { MdNotificationsActive } from "react-icons/md";
 import { PiArticleNyTimesLight } from "react-icons/pi";
-import { RiLineChartLine } from "react-icons/ri";
 import { TbDashboard, TbMessages } from "react-icons/tb";
 
 export const navigationData = [
@@ -15,6 +13,11 @@ export const navigationData = [
     icon: FaBookOpen,
     title: "Courses",
     link: "/courses",
+  },
+  {
+    icon: FaUsers,
+    title: "Users",
+    link: "/users",
   },
   {
     icon: TbMessages,

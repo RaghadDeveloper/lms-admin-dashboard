@@ -21,6 +21,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setAuthFromToken } from "./features/auth/authSlice";
 import LessonInfo from "./components/LessonInfo/LessonInfo";
+import Users from "./pages/Users/Users";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function App() {
                 <Route path="lesson/:lessonId" element={<LessonInfo />} />
               </Route>
             </Route>
+            <Route path="/users" element={<Users />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/articles" element={<Articles />} />

@@ -36,7 +36,7 @@ function Navigation() {
       {navigationData.map((navData) => (
         <div key={navData.title}>
           <Nav Icon={navData.icon} title={navData.title} link={navData.link} />
-          {navData.title === "Course Statisics" && <div className="line"></div>}
+          {navData.title === "Users" && <div className="line"></div>}
         </div>
       ))}
 
