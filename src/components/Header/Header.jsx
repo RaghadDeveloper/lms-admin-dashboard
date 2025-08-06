@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import { MdNotificationsActive } from "react-icons/md";
 import ProfileImg from "./../../assets/images/profileImg.jpg";
 import { useTheme } from "../../context/ThemeContext";
+import { useSelector } from "react-redux";
 
 function Header() {
   const { theme, toggleTheme } = useTheme();
+  const { profile } = useSelector((state) => state.profile);
 
   return (
     <header className={`main-header ${theme}`}>
@@ -29,7 +31,7 @@ function Header() {
         <HiOutlineMoon className="icon" onClick={toggleTheme} />
         <HiOutlineLogout className="icon" />
         <div className="divider"></div>
-        <img className="user" src={ProfileImg} alt="" />
+        <img className="user" src={profile?.avatar_url} alt="" />
       </div>
     </header>
   );

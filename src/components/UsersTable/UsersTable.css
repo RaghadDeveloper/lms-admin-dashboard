@@ -18,6 +18,11 @@
   border-bottom: 1px solid var(--secondary-gray\36);
 }
 
+.dark .user-row p,
+.dark .user-row button {
+  color: var(--very-light);
+}
+
 .user-row:hover {
   border-radius: 8px;
   box-shadow: 0px 0px 8px 3px var(--secondary-gray\36);

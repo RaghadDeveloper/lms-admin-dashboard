@@ -22,16 +22,22 @@ import { useEffect } from "react";
 import { setAuthFromToken } from "./features/auth/authSlice";
 import LessonInfo from "./components/LessonInfo/LessonInfo";
 import Users from "./pages/Users/Users";
+import { setUserFromToken } from "../../lms-instructor-portal/src/features/auth/authSlice";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
     if (token) {
       dispatch(setAuthFromToken(token));
     }
+    if (user) {
+      dispatch(setUserFromToken(user));
+    }
   }, [dispatch]);
+
   return (
     <BrowserRouter>
       <Routes>

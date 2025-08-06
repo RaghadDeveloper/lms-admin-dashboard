@@ -2,7 +2,7 @@ import "./Navigation.css";
 import { useState } from "react";
 import Nav from "../Nav/Nav";
 import { FiChevronLeft } from "react-icons/fi";
-import { MdSwapHoriz } from "react-icons/md";
+import { MdLockReset, MdSwapHoriz } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 import Logo from "./../../assets/images/logo.png";
 import { navigationData } from "../../data/navigationData";
@@ -48,6 +48,11 @@ function Navigation() {
           theme === "light" ? "Switch To Dark Mode" : "Switch To Light Mode"
         }`}
         onClick={toggleTheme}
+      />
+      <Nav
+        Icon={MdLockReset}
+        title={"Reset password"}
+        link={"/reset-password"}
       />
       <Nav Icon={HiOutlineLogout} title={"Logout"} onClick={handleLogout} />
     </div>

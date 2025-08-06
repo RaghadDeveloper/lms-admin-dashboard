@@ -135,7 +135,7 @@ function CoursesPageHeader({ setIsFiltering }) {
             <FaSearch />
           </Button>
         </form>
-        <div>
+        <div className="filter">
           <Select
             text={"All status"}
             options={approval_status}

@@ -6,11 +6,16 @@ import { useTheme } from "../../context/ThemeContext";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCategories } from "../../features/categories/categoriesThunk";
+import { getProfile } from "../../features/profile/profileThunks";
 
 function MainPage() {
   const dispatch = useDispatch();
   const { theme } = useTheme();
   const status = useSelector((state) => state.categories.status);
+
+  useEffect(() => {
+    dispatch(getProfile());
+  }, [dispatch]);
 
   useEffect(() => {
     if (status === "idle") dispatch(fetchCategories());

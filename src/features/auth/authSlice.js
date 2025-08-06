@@ -49,6 +49,9 @@ const authSlice = createSlice({
     setAuthFromToken: (state) => {
       state.isAuthenticated = true;
     },
+    setUserFromToken: (state, action) => {
+      state.user = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
