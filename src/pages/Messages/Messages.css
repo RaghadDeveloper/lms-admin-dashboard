@@ -1,5 +1,19 @@
-.messages-page {
+.messages h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.messages .filters {
+  width: 100%;
+  margin-bottom: 2rem;
   display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
+  justify-content: end;
+  gap: 1rem;
+}
+
+.messages .filters select {
+  max-width: none;
+  width: fit-content;
+  padding-right: 1rem;
 }

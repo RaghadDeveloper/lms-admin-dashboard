@@ -21,7 +21,7 @@ export const navigationData = [
   },
   {
     icon: TbMessages,
-    title: "Messages",
+    title: "Users Messages",
     link: "/messages",
   },
   {

@@ -1,0 +1,67 @@
+.message {
+  background-color: white;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.message:hover {
+  box-shadow: 0px 0px 8px 3px var(--primay-gray\24);
+  scale: 1.01;
+}
+
+.message > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--primary-color);
+  gap: 1rem;
+}
+
+.message.active > div {
+  background-color: var(--secondary-gray\36);
+  border: 1px solid var(--primary-color);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.message.active .icon {
+  rotate: 180deg;
+}
+
+.message.unread > div .user {
+  font-weight: 500;
+}
+
+.dark .message {
+  background-color: var(--dark-bg);
+}
+
+.message .user {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex: 1;
+}
+
+.msg-type {
+  width: 6rem;
+}
+
+.message .msg-content {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.complaint {
+  color: #dc3545;
+}
+.suggestion {
+  color: #198754;
+}
+.question {
+  color: #fbbf24;
+}
