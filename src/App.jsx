@@ -39,7 +39,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/lms-admin-dashboard/">
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="verification" element={<Verification />} />
