@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import InfoBlock from "../InfoBlock/InfoBlock";
 import Button from "../Button/Button";
 import { reviewCourse } from "../../features/courses/coursesThunk";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RejectForm from "../RejectForm/RejectForm";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -27,8 +27,8 @@ function CourseInfo() {
     setReviewData({ approval_status: "approved" });
     dispatch(reviewCourse({ courseId: id, data: reviewData }));
   };
-  const handleCourseReject = () => {
-    console.log(reviewData);
+  const handleCourseReject = (e) => {
+    e.preventDefault();
     dispatch(reviewCourse({ courseId: id, data: reviewData }));
   };
 
@@ -47,16 +47,24 @@ function CourseInfo() {
     rejection_notes,
   } = course;
 
+  useEffect(() => {
+    if (reviewData.approval_status === "rejected") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [reviewData.approval_status]);
+
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;
 
   return (
     <>
-      <div
-        className={`course-info ${
-          reviewData.approval_status === "rejected" ? "disable" : ""
-        }`}
-      >
+      <div className="course-info">
         <img src={image_url} alt="Course Img" />
 
         <div className="about">
