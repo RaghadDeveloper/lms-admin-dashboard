@@ -5,6 +5,7 @@ import coursesReducer from "../features/courses/coursesSlice";
 import lessonsReducer from "../features/lessons/lessonsSlice";
 import profileReducer from "../features/profile/profileSlice";
 import messagesReducer from "../features/messages/messagesSlice";
+import reportsReducer from "../features/reports/reportsSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     lessons: lessonsReducer,
     profile: profileReducer,
     messages: messagesReducer,
+    reports: reportsReducer,
   },
 });
 

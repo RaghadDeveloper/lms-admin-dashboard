@@ -1,0 +1,47 @@
+.reports-header {
+  display: flex;
+  border-bottom: 1px solid var(--secondary-gray\36);
+}
+
+.reports-header:last-child {
+  border-bottom: none;
+}
+
+.reports-header h5 {
+  border-left: 1px solid var(--secondary-gray\36);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.reports-header h5:first-child {
+  border-left: none !important;
+}
+
+.reports-header .id {
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reports-header .user {
+  width: 12rem;
+}
+
+.reports-header .lesson {
+  width: 12rem;
+}
+
+.reports-header .rep-content {
+  padding: 0.5rem 1rem;
+  flex: 1;
+}
+
+.reports-header .details {
+  width: 7rem;
+}
+
+.reports-header .mark-as-read {
+  width: 5rem;
+}

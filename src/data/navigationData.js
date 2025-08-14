@@ -1,7 +1,6 @@
 import { FaBookOpen, FaUsers } from "react-icons/fa";
 import { MdNotificationsActive } from "react-icons/md";
-import { PiArticleNyTimesLight } from "react-icons/pi";
-import { TbDashboard, TbMessages } from "react-icons/tb";
+import { TbDashboard, TbMessageReport, TbMessages } from "react-icons/tb";
 
 export const navigationData = [
   {
@@ -25,13 +24,13 @@ export const navigationData = [
     link: "/messages",
   },
   {
+    icon: TbMessageReport,
+    title: "Reports",
+    link: "/reports",
+  },
+  {
     icon: MdNotificationsActive,
     title: "Notifications",
     link: "/notifications",
-  },
-  {
-    icon: PiArticleNyTimesLight,
-    title: "Articles",
-    link: "/articles",
   },
 ];

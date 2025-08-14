@@ -1,0 +1,71 @@
+.report-row {
+  display: flex;
+  border-bottom: 1px solid var(--primay-gray\24);
+}
+
+.report-row:hover {
+  box-shadow: 0px 0px 8px 3px var(--secondary-gray\36);
+}
+
+.report-row.not-read {
+  background-color: var(--secondary-gray\36);
+}
+
+.dark .report-row.not-read {
+  background-color: var(--primay-gray\40);
+}
+
+.report-row p,
+.report-row button {
+  border-left: 1px solid var(--secondary-gray\36) !important;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--very-dark);
+}
+
+.dark .report-row p,
+.dark .report-row button {
+  color: var(--very-light);
+}
+
+.report-row p:first-child,
+.report-row button:first-child {
+  border-left: none !important;
+}
+
+.report-row .id {
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.report-row .user {
+  width: 12rem;
+}
+
+.report-row .lesson {
+  width: 12rem;
+}
+
+.report-row .rep-content {
+  padding: 0.5rem 1rem;
+  flex: 1;
+}
+
+.report-row .details {
+  width: 7rem;
+}
+.report-row .mark-as-read {
+  width: 5rem;
+}
+
+.report-row button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.report-row button:hover {
+  color: var(--primary-color);
+}

@@ -13,7 +13,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Courses from "./pages/Courses/Courses";
 import Messages from "./pages/Messages/Messages";
 import Notifications from "./pages/Notifications/Notifications";
-import Articles from "./pages/Articles/Articles";
+import Reports from "./pages/Reports/Reports";
 import CourseDetails from "./pages/CourseDetails/CourseDetails";
 import CourseInfo from "./components/CourseInfo/CourseInfo";
 
@@ -59,7 +59,7 @@ function App() {
             <Route path="/users" element={<Users />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/notifications" element={<Notifications />} />
-            <Route path="/articles" element={<Articles />} />
+            <Route path="/reports" element={<Reports />} />
           </Route>
         </Route>
       </Routes>
