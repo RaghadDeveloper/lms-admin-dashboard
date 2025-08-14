@@ -1,0 +1,19 @@
+.no-reports {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7rem;
+  gap: 2rem;
+}
+
+.no-reports img {
+  width: 350px;
+  object-fit: cover;
+}
+
+.no-reports p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}

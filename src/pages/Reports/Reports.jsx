@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { getAllReports } from "../../features/reports/reportsThunk";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
+import NoReports from "../../components/NoReports/NoReports";
 
 function Reports() {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ function Reports() {
 
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
+
+  if (!reports) return <NoReports />;
 
   return (
     <div className="reports">
