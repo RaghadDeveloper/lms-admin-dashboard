@@ -3,6 +3,7 @@ import authReducer from "../features/auth/authSlice";
 import categoriesReducer from "../features/categories/categoriesSlice";
 import coursesReducer from "../features/courses/coursesSlice";
 import lessonsReducer from "../features/lessons/lessonsSlice";
+import lessonFilesReducer from "../features/lessonsFiles/lessonsFilesSlice";
 import profileReducer from "../features/profile/profileSlice";
 import messagesReducer from "../features/messages/messagesSlice";
 import reportsReducer from "../features/reports/reportsSlice";
@@ -13,6 +14,7 @@ const store = configureStore({
     categories: categoriesReducer,
     courses: coursesReducer,
     lessons: lessonsReducer,
+    lessonFiles: lessonFilesReducer,
     profile: profileReducer,
     messages: messagesReducer,
     reports: reportsReducer,

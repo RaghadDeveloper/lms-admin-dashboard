@@ -6,15 +6,18 @@ import { getLessonDetails } from "../../features/lessons/lessonsThunk";
 import VideoInfo from "../VideoInfo/VideoInfo";
 import LessonFiles from "../LessonFiles/LessonFiles";
 import LessonComments from "../LessonComments/LessonComments";
+import { getLessonFile } from "../../features/lessonsFiles/lessonsFilesThunk";
 
 function LessonInfo() {
   const dispatch = useDispatch();
   const { lessonId } = useParams();
   const { loading, error, lesson } = useSelector((state) => state.lessons);
+  const { files } = useSelector((state) => state.lessonFiles);
   const commentsRef = useRef(null);
 
   useEffect(() => {
     dispatch(getLessonDetails(lessonId));
+    dispatch(getLessonFile(lessonId));
   }, [lessonId, dispatch]);
 
   const handleScrollToComments = () => {
@@ -28,7 +31,7 @@ function LessonInfo() {
     <div className="lesson-info">
       <VideoInfo lesson={lesson} onCommentsClick={handleScrollToComments} />
 
-      <LessonFiles />
+      {files.length > 0 && <LessonFiles />}
 
       <div ref={commentsRef}>
         <LessonComments />
