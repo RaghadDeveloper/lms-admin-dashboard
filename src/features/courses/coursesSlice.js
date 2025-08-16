@@ -5,6 +5,7 @@ import {
   getCourseDetails,
   reviewCourse,
   searchCourses,
+  searchCourseTitle,
 } from "./coursesThunk";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   error: null,
   courses: [],
   course: null,
+  titles: [],
 };
 
 const handlePending = (state) => {
@@ -40,6 +42,9 @@ const courseSlice = createSlice({
     clearCourseError: (state) => {
       state.error = null;
     },
+    clearTitles: (state) => {
+      state.titles = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -58,6 +63,13 @@ const courseSlice = createSlice({
         state.courses = action.payload.data;
       })
       .addCase(filterCourses.rejected, handleRejected)
+
+      // searchCoursesTitle
+      .addCase(searchCourseTitle.fulfilled, (state, action) => {
+        state.loading = false;
+        state.titles = action.payload.data;
+      })
+      .addCase(searchCourseTitle.rejected, handleRejected)
 
       // searchCourses
       .addCase(searchCourses.pending, handlePending)
@@ -93,5 +105,5 @@ const courseSlice = createSlice({
   },
 });
 
-export const { clearCourseError } = courseSlice.actions;
+export const { clearCourseError, clearTitles } = courseSlice.actions;
 export default courseSlice.reducer;

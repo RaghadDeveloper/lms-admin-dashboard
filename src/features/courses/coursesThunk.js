@@ -5,6 +5,7 @@ import {
   getCourseDetailsApi,
   reviewCourseApi,
   searchCoursesApi,
+  searchCourseTitleApi,
 } from "./coursesApi";
 
 const extractError = (error) => {
@@ -38,6 +39,19 @@ export const filterCourses = createAsyncThunk(
     }
   }
 );
+
+export const searchCourseTitle = createAsyncThunk(
+  "courses/searchCourseTitle",
+  async (search_key, thunkAPI) => {
+    try {
+      const response = await searchCourseTitleApi(search_key);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(extractError(error));
+    }
+  }
+);
+
 export const searchCourses = createAsyncThunk(
   "courses/searchCourses",
   async (data, thunkAPI) => {
