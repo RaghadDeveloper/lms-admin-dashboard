@@ -23,6 +23,7 @@ import { setAuthFromToken } from "./features/auth/authSlice";
 import LessonInfo from "./components/LessonInfo/LessonInfo";
 import Users from "./pages/Users/Users";
 import { setUserFromToken } from "../../lms-instructor-portal/src/features/auth/authSlice";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <BrowserRouter basename="/lms-admin-dashboard/">
+      <ScrollToTop />
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="verification" element={<Verification />} />
