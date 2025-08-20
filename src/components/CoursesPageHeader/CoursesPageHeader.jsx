@@ -5,14 +5,13 @@ import Select from "../Select/Select";
 import Button from "../Button/Button";
 import { useEffect, useRef, useState } from "react";
 import {
-  filterCourses,
-  getAllCourses,
+  getCourses,
   searchCourseTitle,
 } from "../../features/courses/coursesThunk";
 import { FaSearch } from "react-icons/fa";
 import { clearTitles } from "../../features/courses/coursesSlice";
 
-function CoursesPageHeader({ setIsFiltering }) {
+function CoursesPageHeader({ setIsFiltering, page }) {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
   const { titles } = useSelector((state) => state.courses);
@@ -23,6 +22,7 @@ function CoursesPageHeader({ setIsFiltering }) {
     isFree: "",
     selectedSort: "",
     selectedStatus: "",
+    page,
   });
   const [selectedTitle, setSelectedTitle] = useState(-1);
 
@@ -59,50 +59,70 @@ function CoursesPageHeader({ setIsFiltering }) {
     }
   };
 
+  const buildRequestFilters = () => {
+    const req = { page };
+
+    if (searchKey) req.search_key = searchKey;
+    if (selectedCategoryId) req.category_id = selectedCategoryId;
+    if (isFree === "1") req.only_free = 1;
+    if (isFree === "0") req.order_by_price = "desc";
+
+    switch (selectedSort) {
+      case "1":
+        req.order_by_oldest = 0;
+        break;
+      case "2":
+        req.order_by_oldest = 1;
+        break;
+      case "3":
+        req.order_by_rating = "desc";
+        break;
+      case "4":
+        req.order_by_price = "asc";
+        break;
+      case "5":
+        req.order_by_price = "desc";
+        break;
+      case "6":
+        req.order_by_subscribers = "desc";
+        break;
+    }
+
+    if (selectedStatus) req.approval_status = selectedStatus;
+
+    return req;
+  };
+
   const handleSearch = async (e, customSearchKey = null) => {
     e.preventDefault();
 
     skipNextSearchTitleFetch.current = true;
 
-    const finalSearchKey = customSearchKey ?? searchKey;
+    const updatedKey = customSearchKey ?? searchKey;
+    setFilters((prev) => ({ ...prev, searchKey: updatedKey }));
 
-    const requestFilters = {};
-
-    if (finalSearchKey) requestFilters.search_key = finalSearchKey;
-    if (selectedCategoryId) requestFilters.category_id = selectedCategoryId;
-    if (isFree === "1") requestFilters.only_free = 1;
-    if (isFree === "0") requestFilters.order_by_price = "desc";
-
-    if (selectedSort) {
-      switch (selectedSort) {
-        case "1":
-          requestFilters.order_by_oldest = 0;
-          break;
-        case "2":
-          requestFilters.order_by_oldest = 1;
-          break;
-        case "3":
-          requestFilters.order_by_rating = "desc";
-          break;
-        case "4":
-          requestFilters.order_by_price = "asc";
-          break;
-        case "5":
-          requestFilters.order_by_subscribers = "desc";
-          break;
-        default:
-          break;
-      }
-    }
-
-    if (selectedStatus) {
-      requestFilters.approval_status = selectedStatus;
-    }
-
-    await dispatch(filterCourses(requestFilters));
     await dispatch(clearTitles());
+    await dispatch(
+      getCourses({
+        ...buildRequestFilters(),
+        search_key: updatedKey,
+        page: 1,
+      })
+    );
     setSelectedTitle(-1);
   };
+
+  useEffect(() => {
+    dispatch(getCourses({ ...buildRequestFilters(), page: 1 }));
+  }, [selectedCategoryId, isFree, selectedSort, selectedStatus, dispatch]);
+
+  useEffect(() => {
+    dispatch(getCourses({ ...buildRequestFilters(), page }));
+  }, [page, dispatch]);
+
+  useEffect(() => {
+    if (!searchKey) dispatch(getCourses({ ...buildRequestFilters(), page: 1 }));
+  }, [searchKey, dispatch]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -117,84 +137,6 @@ function CoursesPageHeader({ setIsFiltering }) {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [dispatch]);
-
-  useEffect(() => {
-    const noActiveFilters =
-      !searchKey &&
-      !selectedCategoryId &&
-      isFree === "" &&
-      !selectedSort &&
-      !selectedStatus;
-
-    if (noActiveFilters) {
-      dispatch(getAllCourses());
-    }
-  }, [
-    searchKey,
-    selectedCategoryId,
-    isFree,
-    selectedSort,
-    selectedStatus,
-    dispatch,
-  ]);
-
-  useEffect(() => {
-    const requestFilters = {};
-
-    if (searchKey) requestFilters.search_key = searchKey;
-    if (selectedCategoryId) requestFilters.category_id = selectedCategoryId;
-    if (isFree === "1") requestFilters.only_free = 1;
-    if (isFree === "0") requestFilters.order_by_price = "desc";
-
-    if (selectedSort) {
-      switch (selectedSort) {
-        case "1":
-          requestFilters.order_by_oldest = 0;
-          break;
-        case "2":
-          requestFilters.order_by_oldest = 1;
-          break;
-        case "3":
-          requestFilters.order_by_rating = "desc";
-          break;
-        case "4":
-          requestFilters.order_by_price = "asc";
-          break;
-        case "5":
-          requestFilters.order_by_price = "desc";
-          break;
-        case "6":
-          requestFilters.order_by_subscribers = "desc";
-          break;
-        default:
-          break;
-      }
-    }
-
-    if (selectedStatus) {
-      requestFilters.approval_status = selectedStatus;
-    }
-
-    dispatch(filterCourses(requestFilters));
-  }, [selectedCategoryId, isFree, selectedSort, selectedStatus, dispatch]);
-
-  useEffect(() => {
-    const activeFilter =
-      searchKey ||
-      selectedCategoryId ||
-      isFree !== "" ||
-      selectedSort ||
-      selectedStatus;
-
-    setIsFiltering(!!activeFilter);
-  }, [
-    searchKey,
-    selectedCategoryId,
-    isFree,
-    selectedSort,
-    selectedStatus,
-    setIsFiltering,
-  ]);
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
@@ -212,6 +154,11 @@ function CoursesPageHeader({ setIsFiltering }) {
 
     return () => clearTimeout(delayDebounce);
   }, [searchKey, dispatch]);
+
+  useEffect(() => {
+    const active = Object.values(filters).some((val) => val);
+    setIsFiltering(active);
+  }, [filters, setIsFiltering]);
 
   return (
     <header className="courses-page-header">
