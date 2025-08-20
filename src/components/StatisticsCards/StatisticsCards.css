@@ -1,0 +1,20 @@
+.statistics-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  grid-gap: 1.2rem;
+}
+
+.statistic-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+.statistic-card .header select {
+  width: fit-content;
+  padding-right: 1rem;
+}

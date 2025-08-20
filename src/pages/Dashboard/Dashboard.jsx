@@ -1,7 +1,12 @@
 import "./Dashboard.css";
+import StatisticsCards from "../../components/StatisticsCards/StatisticsCards";
 
 function Dashboard() {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <StatisticsCards />
+    </div>
+  );
 }
 
 export default Dashboard;

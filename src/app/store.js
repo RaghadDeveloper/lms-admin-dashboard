@@ -7,6 +7,7 @@ import lessonFilesReducer from "../features/lessonsFiles/lessonsFilesSlice";
 import profileReducer from "../features/profile/profileSlice";
 import messagesReducer from "../features/messages/messagesSlice";
 import reportsReducer from "../features/reports/reportsSlice";
+import statisticsReducer from "../features/statistics/statisticsSlice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     profile: profileReducer,
     messages: messagesReducer,
     reports: reportsReducer,
+    statistics: statisticsReducer,
   },
 });
 

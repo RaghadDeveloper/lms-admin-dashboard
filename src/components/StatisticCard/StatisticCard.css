@@ -1,0 +1,54 @@
+.statistic-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  color: var(--very-dark);
+  background-color: white;
+  box-shadow: 2px 5px 5px var(--primay-gray\24);
+  border-radius: 4px;
+}
+
+.dark .statistic-card {
+  box-shadow: 2px 3px 5px var(--secondary-gray\36);
+}
+
+.statistic-card .icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.statistic-card .info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.statistic-card .info h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.statistic-card .info > span {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.dark .statistic-card {
+  background-color: var(--dark-bg);
+  color: var(--very-light);
+}
+
+.percentage,
+.text-success,
+.text-danger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.text-success {
+  color: #198754;
+}
+.text-danger {
+  color: #dc3545;
+}

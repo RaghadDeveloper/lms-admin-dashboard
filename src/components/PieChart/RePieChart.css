@@ -1,0 +1,24 @@
+.card6 {
+  grid-column: span 2;
+  flex-direction: column;
+  align-items: center;
+  height: 550px;
+}
+
+.dark .card6 {
+  color: var(--very-dark);
+}
+
+.dark .categories-names,
+.dark .card6 h4 {
+  color: var(--very-light);
+}
+
+.categories-names {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 48%);
+  justify-content: space-between;
+  row-gap: 0.3rem;
+  margin: 1rem 5rem 1rem 13rem;
+}
