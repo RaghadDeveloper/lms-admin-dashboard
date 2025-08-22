@@ -1,11 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllLessons, getLessonDetails } from "./lessonsThunk";
+import {
+  getAllLessons,
+  getLessonComments,
+  getLessonDetails,
+} from "./lessonsThunk";
 
 const initialState = {
   loading: false,
   error: null,
   lessons: [],
   lesson: null,
+  comments: [],
 };
 
 const handlePending = (state) => {
@@ -52,7 +57,14 @@ const lessonsSlice = createSlice({
         state.loading = false;
         state.lesson = action.payload.data;
       })
-      .addCase(getLessonDetails.rejected, handleRejected);
+      .addCase(getLessonDetails.rejected, handleRejected)
+
+      // getLessonComments
+      .addCase(getLessonComments.fulfilled, (state, action) => {
+        state.loading = false;
+        state.comments = action.payload.data;
+      })
+      .addCase(getLessonComments.rejected, handleRejected);
   },
 });
 
