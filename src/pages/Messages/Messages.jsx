@@ -6,6 +6,7 @@ import UserMessage from "../../components/UserMessage/UserMessage";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import Select from "../../components/Select/Select";
+import NoMessages from "../../components/NoMessages/NoMessages";
 
 function Messages() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function Messages() {
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
 
+  if (!messages.length) return <NoMessages />;
   return (
     <div className="messages">
       <h1>Users Messages</h1>

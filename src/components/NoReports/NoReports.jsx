@@ -5,7 +5,10 @@ function NoReports() {
   return (
     <div className="no-reports">
       <img src={NoReport} alt="No Reports" />
-      <p>No reports available yet.</p>
+      <p>
+        Once students start completing lessons, their reports will be available
+        on this page.
+      </p>
     </div>
   );
 }

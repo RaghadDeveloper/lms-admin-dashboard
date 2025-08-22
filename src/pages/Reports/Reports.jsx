@@ -19,11 +19,12 @@ function Reports() {
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
 
-  if (!reports) return <NoReports />;
+  if (!reports.length) return <NoReports />;
 
   return (
     <div className="reports">
       <h1>Reports</h1>
+
       <p className="read-all">Mark all as read</p>
       <div className="reports-table">
         <ReportsTableHeader />
