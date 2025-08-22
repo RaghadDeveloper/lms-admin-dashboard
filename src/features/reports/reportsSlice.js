@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllReports } from "./reportsThunk";
+import { getAllReports, getReportDetails } from "./reportsThunk";
 
 const initialState = {
   loading: false,
@@ -37,7 +37,18 @@ const reportsSlice = createSlice({
         state.loading = false;
         state.reports = action.payload.data;
       })
-      .addCase(getAllReports.rejected, handleRejected);
+      .addCase(getAllReports.rejected, handleRejected)
+
+      // getReportDetails
+      .addCase(getReportDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.reports = state.reports.map((report) =>
+          report.id === action.payload.data.id
+            ? { ...report, status: "read" }
+            : report
+        );
+      })
+      .addCase(getReportDetails.rejected, handleRejected);
   },
 });
 
