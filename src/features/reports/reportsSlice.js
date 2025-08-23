@@ -5,6 +5,7 @@ const initialState = {
   loading: false,
   error: null,
   reports: [],
+  reportInfo: null,
 };
 
 const handlePending = (state) => {
@@ -47,6 +48,7 @@ const reportsSlice = createSlice({
             ? { ...report, status: "read" }
             : report
         );
+        state.reportInfo = action.payload.data;
       })
       .addCase(getReportDetails.rejected, handleRejected);
   },
