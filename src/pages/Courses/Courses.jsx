@@ -9,6 +9,7 @@ import NoCourses from "../../components/NoCourses/NoCourses";
 import NoResults from "../../components/NoResults/NoResults";
 import { useState } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import PaginationControls from "../../components/PaginationControls/PaginationControls";
 
 function Courses() {
   const [page, setPage] = useState(1);
@@ -33,25 +34,7 @@ function Courses() {
       {!loading && !error && courses?.length > 0 && (
         <>
           <CoursesGroup courses={courses} />
-          <div className="courses-pagination-controls">
-            <button
-              disabled={!pagination.prev}
-              onClick={() => setPage((prev) => prev - 1)}
-            >
-              <GrFormPrevious />
-            </button>
-            {pagination.pages.map((page) => (
-              <span key={page.page} onClick={() => setPage(page.page)}>
-                {page.page}
-              </span>
-            ))}
-            <button
-              disabled={!pagination.next}
-              onClick={() => setPage((prev) => prev + 1)}
-            >
-              <GrFormNext />
-            </button>
-          </div>
+          <PaginationControls pagination={pagination} setPage={setPage} />
         </>
       )}
     </div>

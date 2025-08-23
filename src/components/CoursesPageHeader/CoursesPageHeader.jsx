@@ -1,6 +1,6 @@
 import "./CoursesPageHeader.css";
 import { useDispatch, useSelector } from "react-redux";
-import { approval_status, price, sortBy } from "../../data/sortBy";
+import { approval_status, price, sortBy } from "../../data/coursesFilters";
 import Select from "../Select/Select";
 import Button from "../Button/Button";
 import { useEffect, useRef, useState } from "react";

@@ -1,0 +1,54 @@
+.users-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--secondary-gray\36);
+}
+
+.users-header h5 {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.users-header .id {
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.users-header .user-img {
+  width: 8rem;
+}
+
+.users-header .user-img img {
+  object-fit: cover;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  margin: 4px 4rem 4px 1rem;
+}
+
+.users-header .role {
+  padding: 0.5rem 1rem;
+  width: 5rem;
+}
+
+.users-header .email {
+  padding: 0.5rem 1rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.users-header .birth-date {
+  width: 8rem;
+}
+
+/* .users-header .details {
+  width: 7rem;
+} */
+
+.users-header .ban {
+  width: 4rem;
+  margin-right: 10px;
+}

@@ -8,6 +8,7 @@ import profileReducer from "../features/profile/profileSlice";
 import messagesReducer from "../features/messages/messagesSlice";
 import reportsReducer from "../features/reports/reportsSlice";
 import statisticsReducer from "../features/statistics/statisticsSlice";
+import usersReducer from "../features/users/usersSlice";
 
 const store = configureStore({
   reducer: {
@@ -20,7 +21,12 @@ const store = configureStore({
     messages: messagesReducer,
     reports: reportsReducer,
     statistics: statisticsReducer,
+    users: usersReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: false,
+    }),
 });
 
 export default store;

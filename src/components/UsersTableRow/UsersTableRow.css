@@ -1,0 +1,92 @@
+.user-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--secondary-gray\36);
+}
+
+.dark .user-row p,
+.dark .user-row button {
+  color: var(--very-light);
+}
+
+.user-row:hover {
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px 3px var(--secondary-gray\36);
+}
+
+.user-row p,
+.user-row button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--very-dark);
+}
+
+.user-row .id {
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-row .user-img {
+  width: 8rem;
+}
+
+.user-row .user-img img {
+  object-fit: cover;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  margin: 4px 4rem 4px 1rem;
+}
+
+.user-row .role {
+  padding: 0.5rem 1rem;
+  width: 5rem;
+}
+
+.user-row .email {
+  padding: 0.5rem 1rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.user-row .birth-date {
+  width: 8rem;
+}
+
+/* .user-row .details {
+  width: 7rem;
+} */
+
+.user-row .ban {
+  width: 4rem;
+  padding: 0;
+  border-radius: 4px;
+  background-color: #fbeaec;
+  color: #dc3545 !important;
+  margin-right: 10px;
+}
+
+.user-row .unban {
+  width: 4rem;
+  padding: 0;
+  border-radius: 4px;
+  background-color: #e5f2e5;
+  color: #198754 !important;
+  margin-right: 10px;
+}
+
+/* .user-row button.ban {
+  color: #dc3545;
+} */
+
+.user-row button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.users-table.loading .user-row button {
+  cursor: not-allowed;
+}
