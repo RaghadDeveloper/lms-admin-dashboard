@@ -14,6 +14,7 @@ import {
   studentsStatistics,
   teachersStatistics,
 } from "../../features/statistics/statisticsThunk";
+import { motion } from "framer-motion";
 
 const formatter = new Intl.DateTimeFormat("en", { month: "short" });
 
@@ -42,7 +43,13 @@ function UsersLineChart() {
   }, [dispatch, year]);
 
   return (
-    <div className="statistic-card card5">
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="statistic-card card5"
+    >
       <div className="header">
         <h4>All Users</h4>
         <select value={year} onChange={(e) => setYear(e.target.value)}>
@@ -65,7 +72,7 @@ function UsersLineChart() {
         <Line type="monotone" dataKey="Teachers" stroke="#2c7da0" />
         <Line type="monotone" dataKey="Students" stroke="#3caddd" />
       </LineChart>
-    </div>
+    </motion.div>
   );
 }
 

@@ -12,6 +12,7 @@ import "./ReBarChart.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../api/axiosInstance";
+import { motion } from "framer-motion";
 
 const COLORS = [
   "#d0e8ef",
@@ -47,7 +48,13 @@ function ReBarChart() {
   }));
 
   return (
-    <div className="statistic-card card7">
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="statistic-card card7"
+    >
       <div className="header">
         <h4>Popular Categories</h4>
         <select value={year} onChange={(e) => setYear(e.target.value)}>
@@ -70,7 +77,7 @@ function ReBarChart() {
           ))}
         </Bar>
       </BarChart>
-    </div>
+    </motion.div>
   );
 }
 

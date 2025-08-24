@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import axiosInstance from "../../api/axiosInstance";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
 
 const COLORS = [
   "#d0e8ef",
@@ -46,7 +47,13 @@ function RePieChart() {
   }));
 
   return (
-    <div className="statistic-card card6">
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="statistic-card card6"
+    >
       <div className="header">
         <h4>Courses by Category</h4>
         <select value={year} onChange={(e) => setYear(e.target.value)}>
@@ -85,7 +92,7 @@ function RePieChart() {
           </span>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
