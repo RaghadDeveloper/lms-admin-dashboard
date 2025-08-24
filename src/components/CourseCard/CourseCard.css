@@ -7,9 +7,7 @@
   background-color: white;
   border-radius: 4px;
   justify-content: space-between;
-}
-
-.course-card:hover {
+  cursor: pointer;
   box-shadow: 2px 5px 5px var(--primay-gray\24);
 }
 

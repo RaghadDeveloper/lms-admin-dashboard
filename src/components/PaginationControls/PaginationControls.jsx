@@ -11,7 +11,11 @@ function PaginationControls({ pagination, setPage }) {
         <GrFormPrevious />
       </button>
       {pagination.pages.map((page) => (
-        <span key={page.page} onClick={() => setPage(page.page)}>
+        <span
+          key={page.page}
+          onClick={() => setPage(page.page)}
+          className={`${page.page == pagination.currentPage ? "active " : ""}`}
+        >
           {page.page}
         </span>
       ))}

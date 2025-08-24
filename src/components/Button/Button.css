@@ -47,3 +47,7 @@
 .dark .icon {
   color: var(--primary-light);
 }
+
+.btn.primary:hover {
+  opacity: 0.9;
+}

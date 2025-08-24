@@ -10,6 +10,7 @@ import {
 } from "../../features/courses/coursesThunk";
 import { FaSearch } from "react-icons/fa";
 import { clearTitles } from "../../features/courses/coursesSlice";
+import { clearLessons } from "../../features/lessons/lessonsSlice";
 
 function CoursesPageHeader({ setIsFiltering, page }) {
   const dispatch = useDispatch();
@@ -121,7 +122,10 @@ function CoursesPageHeader({ setIsFiltering, page }) {
   }, [page, dispatch]);
 
   useEffect(() => {
-    if (!searchKey) dispatch(getCourses({ ...buildRequestFilters(), page: 1 }));
+    if (!searchKey) {
+      dispatch(getCourses({ ...buildRequestFilters(), page: 1 }));
+      dispatch(clearLessons());
+    }
   }, [searchKey, dispatch]);
 
   useEffect(() => {
