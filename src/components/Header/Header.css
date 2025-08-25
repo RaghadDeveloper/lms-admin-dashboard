@@ -1,6 +1,6 @@
 .main-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   width: 100%;
   background-color: white;
   padding: 0.5rem;

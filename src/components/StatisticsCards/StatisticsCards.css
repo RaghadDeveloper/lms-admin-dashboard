@@ -18,3 +18,9 @@
   width: fit-content;
   padding-right: 1rem;
 }
+
+@media (max-width: 1680px) {
+  .statistics-cards {
+    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  }
+}

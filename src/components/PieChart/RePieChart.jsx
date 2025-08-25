@@ -31,6 +31,7 @@ function RePieChart() {
   const [year, setYear] = useState("");
   const [data, setData] = useState(categories);
 
+  console.log(year);
   useEffect(() => {
     if (year) {
       axiosInstance
@@ -57,7 +58,7 @@ function RePieChart() {
       <div className="header">
         <h4>Courses by Category</h4>
         <select value={year} onChange={(e) => setYear(e.target.value)}>
-          <option value="">Select year</option>
+          <option value=" ">Select year</option>
           <option value="2025">2025</option>
           <option value="2024">2024</option>
           <option value="2023">2023</option>

@@ -21,6 +21,7 @@ const formatter = new Intl.DateTimeFormat("en", { month: "short" });
 function UsersLineChart() {
   const dispatch = useDispatch();
   const [year, setYear] = useState(2025);
+  const [maxValue, setMaxValue] = useState(0);
   const { teachers, students } = useSelector((state) => state.statistics);
 
   const teachersStatisticsData = teachers?.statistics;
@@ -41,6 +42,15 @@ function UsersLineChart() {
     dispatch(teachersStatistics(year));
     dispatch(studentsStatistics(year));
   }, [dispatch, year]);
+
+  useEffect(() => {
+    setMaxValue(
+      Math.max(
+        ...(mergedData?.map((item) => item.Teachers) ||
+          mergedData?.map((item) => item.Students) || [0])
+      )
+    );
+  }, [mergedData]);
 
   return (
     <motion.div
@@ -66,11 +76,21 @@ function UsersLineChart() {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="month" />
-        <YAxis tickCount={10} />
+        <YAxis tickCount={10} domain={[0, Math.ceil(maxValue) + 10]} />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Teachers" stroke="#2c7da0" />
-        <Line type="monotone" dataKey="Students" stroke="#3caddd" />
+        <Line
+          type="monotone"
+          dataKey="Teachers"
+          stroke="#2c7da0"
+          activeDot={{ r: 6 }}
+        />
+        <Line
+          type="monotone"
+          dataKey="Students"
+          stroke="#3caddd"
+          activeDot={{ r: 6 }}
+        />
       </LineChart>
     </motion.div>
   );
