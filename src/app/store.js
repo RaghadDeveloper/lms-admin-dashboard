@@ -9,6 +9,7 @@ import messagesReducer from "../features/messages/messagesSlice";
 import reportsReducer from "../features/reports/reportsSlice";
 import statisticsReducer from "../features/statistics/statisticsSlice";
 import usersReducer from "../features/users/usersSlice";
+import quizReducer from "../features/quiz/quizSlice";
 
 const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ const store = configureStore({
     reports: reportsReducer,
     statistics: statisticsReducer,
     users: usersReducer,
+    quiz: quizReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

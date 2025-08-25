@@ -31,7 +31,6 @@ function RePieChart() {
   const [year, setYear] = useState("");
   const [data, setData] = useState(categories);
 
-  console.log(year);
   useEffect(() => {
     if (year) {
       axiosInstance
