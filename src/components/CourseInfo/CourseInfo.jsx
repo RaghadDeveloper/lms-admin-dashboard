@@ -52,6 +52,7 @@ function CourseInfo() {
   };
 
   const handleGetSubscribers = async () => {
+    if (!subscribers_count) return;
     setShowProfilesList(true);
     await dispatch(getAllProfiles({ subscribers_course_id: id }));
   };
