@@ -56,6 +56,12 @@ function CourseInfo() {
     await dispatch(getAllProfiles({ subscribers_course_id: id }));
   };
 
+  const handleGetRatings = async () => {
+    if (!rating) return;
+    setShowProfilesList(true);
+    await dispatch(getAllProfiles({ ratings_course_id: id }));
+  };
+
   useEffect(() => {
     if (reviewData.approval_status === "rejected" || showProfilesList) {
       document.body.style.overflow = "hidden";
@@ -111,7 +117,11 @@ function CourseInfo() {
           />
           <InfoBlock label={"Duration"} value={formatTime(course_duration)} />
           <InfoBlock label={"Lessons"} value={lessons_count} />
-          <InfoBlock label={"Rating"} value={rating} />
+          <InfoBlock
+            label={"Rating"}
+            value={rating}
+            onClick={handleGetRatings}
+          />
           <InfoBlock
             label={"Students"}
             value={subscribers_count}
