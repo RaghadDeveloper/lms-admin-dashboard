@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import RejectForm from "../RejectForm/RejectForm";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { getAllProfiles } from "../../features/users/usersThunk";
+import ProfilesList from "../ProfilesList/ProfilesList";
 
 function formatTime(timeStr) {
   const [hours, minutes] = timeStr.split(":").map(Number);
@@ -18,19 +20,11 @@ function formatTime(timeStr) {
 function CourseInfo() {
   const dispatch = useDispatch();
   const { loading, error, course } = useSelector((state) => state.courses);
+  const [showProfilesList, setShowProfilesList] = useState(false);
   const [reviewData, setReviewData] = useState({
     approval_status: "approved",
     rejection_notes: "",
   });
-
-  const handleCourseApprove = () => {
-    setReviewData({ approval_status: "approved" });
-    dispatch(reviewCourse({ courseId: id, data: reviewData }));
-  };
-  const handleCourseReject = (e) => {
-    e.preventDefault();
-    dispatch(reviewCourse({ courseId: id, data: reviewData }));
-  };
 
   const {
     id,
@@ -47,8 +41,23 @@ function CourseInfo() {
     rejection_notes,
   } = course;
 
+  const handleCourseApprove = () => {
+    setReviewData({ approval_status: "approved" });
+    dispatch(reviewCourse({ courseId: id, data: reviewData }));
+  };
+
+  const handleCourseReject = (e) => {
+    e.preventDefault();
+    dispatch(reviewCourse({ courseId: id, data: reviewData }));
+  };
+
+  const handleGetSubscribers = async () => {
+    setShowProfilesList(true);
+    await dispatch(getAllProfiles({ subscribers_course_id: id }));
+  };
+
   useEffect(() => {
-    if (reviewData.approval_status === "rejected") {
+    if (reviewData.approval_status === "rejected" || showProfilesList) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -57,7 +66,7 @@ function CourseInfo() {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [reviewData.approval_status]);
+  }, [reviewData.approval_status, showProfilesList]);
 
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;
@@ -103,7 +112,11 @@ function CourseInfo() {
           <InfoBlock label={"Duration"} value={formatTime(course_duration)} />
           <InfoBlock label={"Lessons"} value={lessons_count} />
           <InfoBlock label={"Rating"} value={rating} />
-          <InfoBlock label={"Students"} value={subscribers_count} />
+          <InfoBlock
+            label={"Students"}
+            value={subscribers_count}
+            onClick={handleGetSubscribers}
+          />
         </div>
       </div>
       {approval_status === "pending" && (
@@ -131,6 +144,7 @@ function CourseInfo() {
           setReviewData={setReviewData}
         />
       )}
+      {showProfilesList && <ProfilesList setIsShow={setShowProfilesList} />}
     </>
   );
 }

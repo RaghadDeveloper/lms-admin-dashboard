@@ -20,6 +20,10 @@
   cursor: pointer;
 }
 
+.details-layout .title:hover {
+  color: var(--primary-light);
+}
+
 .details-layout .category::first-letter,
 .details-layout .title::first-letter {
   text-transform: uppercase;
