@@ -39,7 +39,7 @@
   color: var(--primary-color);
 }
 
-.comment .reactions div {
+.comment .reactions span {
   display: flex;
   gap: 0.5rem;
   align-items: center;

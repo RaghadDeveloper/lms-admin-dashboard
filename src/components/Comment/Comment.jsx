@@ -1,10 +1,33 @@
 import "./Comment.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiSolidLike } from "react-icons/bi";
 import CommentReplies from "../CommentReplies/CommentReplies";
+import ProfilesList from "../ProfilesList/ProfilesList";
+import { getAllProfiles } from "../../features/users/usersThunk";
+import { useDispatch } from "react-redux";
 
 function Comment({ comment, type }) {
+  const dispatch = useDispatch();
+  const [showProfilesList, setShowProfilesList] = useState(false);
   const [showReplies, setShowReplies] = useState(false);
+
+  useEffect(() => {
+    if (showProfilesList) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showProfilesList]);
+
+  const handleGetLikes = async () => {
+    if (!comment.likes_count) return;
+    setShowProfilesList(true);
+    await dispatch(getAllProfiles({ likes_comment_id: comment.id }));
+  };
 
   return (
     <>
@@ -17,10 +40,10 @@ function Comment({ comment, type }) {
           </div>
           <div className="reactions">
             {comment.likes_count > 0 && (
-              <div>
+              <span onClick={handleGetLikes}>
                 {comment.likes_count}
                 <BiSolidLike className="liked" />
-              </div>
+              </span>
             )}
             {!type && comment.replies.length > 0 && (
               <span onClick={() => setShowReplies(true)}>
@@ -31,6 +54,7 @@ function Comment({ comment, type }) {
         </div>
       </div>
       {showReplies && <CommentReplies comment={comment} />}
+      {showProfilesList && <ProfilesList setIsShow={setShowProfilesList} />}
     </>
   );
 }
