@@ -44,7 +44,7 @@ const usersSlice = createSlice({
       .addCase(getAllProfiles.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.profiles = action.payload.data.users;
+        state.profiles = action.payload.data?.users;
         state.pagination = {
           currentPage: action.payload.data?.pagination.current_page,
           prev: action.payload.data?.pagination.prev_page,

@@ -10,7 +10,7 @@ function PaginationControls({ pagination, setPage }) {
       >
         <GrFormPrevious />
       </button>
-      {pagination.pages.map((page) => (
+      {pagination?.pages?.map((page) => (
         <span
           key={page.page}
           onClick={() => setPage(page.page)}

@@ -17,7 +17,7 @@ function UsersTableRow({ profile }) {
 
   return (
     <div className="user-row">
-      <p className="id">{profile.id}</p>
+      <p className="id">{profile.id - 1}</p>
       <div className="user-img">
         <img src={profile.avatar_url} alt="user img" />
       </div>
