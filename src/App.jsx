@@ -25,6 +25,7 @@ import Users from "./pages/Users/Users";
 import { setUserFromToken } from "../../lms-instructor-portal/src/features/auth/authSlice";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import QuizDetails from "./pages/QuizDetails/QuizDetails";
+import Subscriptions from "./pages/Subscriptions/Subscriptions";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ function App() {
               <Route path=":courseId/quiz/:quizId" element={<QuizDetails />} />
             </Route>
             <Route path="/users" element={<Users />} />
+            <Route path="/subscriptions" element={<Subscriptions />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/reports" element={<Reports />} />

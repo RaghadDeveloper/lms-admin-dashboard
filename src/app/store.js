@@ -11,6 +11,7 @@ import statisticsReducer from "../features/statistics/statisticsSlice";
 import usersReducer from "../features/users/usersSlice";
 import quizReducer from "../features/quiz/quizSlice";
 import notificationsReducer from "../features/notifications/notificationsSlice";
+import subscriptionsReducer from "../features/subscriptions/subscriptionsSlice";
 
 const store = configureStore({
   reducer: {
@@ -26,6 +27,7 @@ const store = configureStore({
     users: usersReducer,
     quiz: quizReducer,
     notifications: notificationsReducer,
+    subscriptions: subscriptionsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

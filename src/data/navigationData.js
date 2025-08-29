@@ -1,4 +1,4 @@
-import { FaBookOpen, FaUsers } from "react-icons/fa";
+import { FaBookOpen, FaMoneyCheckAlt, FaUsers } from "react-icons/fa";
 import { MdNotificationsActive } from "react-icons/md";
 import { TbDashboard, TbMessageReport, TbMessages } from "react-icons/tb";
 
@@ -17,6 +17,11 @@ export const navigationData = [
     icon: FaUsers,
     title: "Users",
     link: "/users",
+  },
+  {
+    icon: FaMoneyCheckAlt,
+    title: "Subscriptions",
+    link: "/subscriptions",
   },
   {
     icon: TbMessages,

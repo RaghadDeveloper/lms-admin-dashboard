@@ -1,0 +1,9 @@
+.subscription-row {
+  display: flex;
+  border-bottom: 1px solid var(--primay-gray\24);
+}
+
+.subscription-row:hover {
+  box-shadow: 0px 0px 8px 3px var(--secondary-gray\36);
+  border-radius: 8px;
+}

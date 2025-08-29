@@ -1,0 +1,19 @@
+.subscription-header {
+  display: flex;
+  border-bottom: 1px solid var(--secondary-gray\36);
+}
+
+.subscription-header:last-child {
+  border-bottom: none;
+}
+
+.subscription-header h5 {
+  border-left: 1px solid var(--secondary-gray\36);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.subscription-header h5:first-child {
+  border-left: none !important;
+}
