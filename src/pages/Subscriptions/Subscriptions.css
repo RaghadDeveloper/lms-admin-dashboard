@@ -70,3 +70,7 @@
 .date-field:has(> input:focus) label {
   color: var(--primary-color);
 }
+
+.dark .date-field input {
+  color: var(--very-light);
+}

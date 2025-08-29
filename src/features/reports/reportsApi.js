@@ -4,3 +4,6 @@ export const getAllReportsApi = () => axiosInstance.get("/reports");
 
 export const getReportDetailsApi = (reportId) =>
   axiosInstance.get(`/reports/details?report_id=${reportId}`);
+
+export const readAllReportsApi = () =>
+  axiosInstance.post("/reports/mark-all-as-read");

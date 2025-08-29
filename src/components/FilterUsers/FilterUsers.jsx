@@ -37,7 +37,7 @@ function FilterUsers({ page }) {
 
   return (
     <div className="filter-users">
-      <input placeholder="Search user" />
+      {/* <input placeholder="Search user" /> */}
       <div className="select-container">
         <Select
           options={banStatus}

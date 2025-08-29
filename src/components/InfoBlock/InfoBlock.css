@@ -14,3 +14,7 @@
 .info-block.clickable {
   cursor: pointer;
 }
+
+.course-info .info-block {
+  padding-right: 2.3rem;
+}

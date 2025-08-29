@@ -1,6 +1,7 @@
 .users .filter-users {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: end;
   margin-bottom: 2rem;
 }
 

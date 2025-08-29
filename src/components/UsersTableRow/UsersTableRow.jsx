@@ -23,7 +23,9 @@ function UsersTableRow({ profile }) {
       </div>
       <p className="role">{profile.role}</p>
       <p className="email">{profile.email}</p>
-      <p className="birth-date">{formatDate(profile?.birth_date || "")}</p>
+      <p className="birth-date">
+        {profile?.birth_date ? formatDate(profile?.birth_date) : "undefiend"}
+      </p>
       {profile.isBanned ? (
         <button className="unban" onClick={handleBan} disabled={banLoading}>
           UnBan

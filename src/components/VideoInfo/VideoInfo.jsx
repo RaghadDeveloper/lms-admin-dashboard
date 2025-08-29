@@ -74,7 +74,7 @@ function VideoInfo({ lesson, onCommentsClick }) {
             value={lesson?.comment_count}
             onClick={onCommentsClick}
           />
-          <InfoBlock label={"Reports"} value={"X"} />
+          <InfoBlock label={"Reports"} value={lesson?.report_count} />
         </div>
       </div>
       {showProfilesList && <ProfilesList setIsShow={setShowProfilesList} />}

@@ -3,7 +3,10 @@ import ReportRow from "../../components/ReportRow/ReportRow";
 import ReportsTableHeader from "../../components/ReportsTableHeader/ReportsTableHeader";
 import "./Reports.css";
 import { useEffect } from "react";
-import { getAllReports } from "../../features/reports/reportsThunk";
+import {
+  getAllReports,
+  readAllReports,
+} from "../../features/reports/reportsThunk";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import NoReports from "../../components/NoReports/NoReports";
@@ -16,6 +19,10 @@ function Reports() {
     dispatch(getAllReports());
   }, [dispatch]);
 
+  const handleReadAllReports = () => {
+    dispatch(readAllReports());
+  };
+
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
 
@@ -25,7 +32,9 @@ function Reports() {
     <div className="reports">
       <h1>Reports</h1>
 
-      <p className="read-all">Mark all as read</p>
+      <p className="read-all" onClick={handleReadAllReports}>
+        Mark all as read
+      </p>
       <div className="reports-table">
         <ReportsTableHeader />
         {reports.map((report, index) => (

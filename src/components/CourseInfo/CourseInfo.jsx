@@ -39,6 +39,7 @@ function CourseInfo() {
     tags,
     approval_status,
     rejection_notes,
+    my_earnings,
   } = course;
 
   const handleCourseApprove = () => {
@@ -113,9 +114,10 @@ function CourseInfo() {
 
         <div className="row">
           <InfoBlock
-            label={"price"}
+            label={"Price"}
             value={price === "Free" ? price : `$${price}`}
           />
+          <InfoBlock label={"Earning"} value={`$${my_earnings ?? "0"}`} />
           <InfoBlock label={"Duration"} value={formatTime(course_duration)} />
           <InfoBlock label={"Lessons"} value={lessons_count} />
           <InfoBlock
