@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllMessages } from "./messagesThunk";
+import { getAllMessages, getMessageDetails } from "./messagesThunk";
 
 const initialState = {
   loading: false,
+  detailsLoading: false,
   error: null,
   messages: [],
 };
@@ -37,7 +38,24 @@ const messagesSlice = createSlice({
         state.loading = false;
         state.messages = action.payload.data;
       })
-      .addCase(getAllMessages.rejected, handleRejected);
+      .addCase(getAllMessages.rejected, handleRejected)
+
+      // getMessageDetails
+      .addCase(getMessageDetails.pending, (state) => {
+        state.detailsLoading = true;
+        state.error = null;
+      })
+      .addCase(getMessageDetails.fulfilled, (state, action) => {
+        console.log(action);
+        state.detailsLoading = false;
+        const updatedMessage = action.payload.data;
+
+        const index = state.messages.findIndex(
+          (msg) => msg.id === updatedMessage.id
+        );
+        state.messages[index] = updatedMessage;
+      })
+      .addCase(getMessageDetails.rejected, handleRejected);
   },
 });
 

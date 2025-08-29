@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getMessagesAPI } from "./messagesApi";
+import { getMessageDetailsApi, getMessagesAPI } from "./messagesApi";
 
 const extractError = (error) => {
   return (
@@ -11,9 +11,22 @@ const extractError = (error) => {
 
 export const getAllMessages = createAsyncThunk(
   "messages/getAllMessages",
-  async (_, thunkAPI) => {
+  async (filters, thunkAPI) => {
     try {
-      const response = await getMessagesAPI();
+      const response = await getMessagesAPI(filters);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(extractError(error));
+    }
+  }
+);
+
+export const getMessageDetails = createAsyncThunk(
+  "messages/getMessageDetails",
+  async (messageId, thunkAPI) => {
+    try {
+      const response = await getMessageDetailsApi(messageId);
+      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(extractError(error));
