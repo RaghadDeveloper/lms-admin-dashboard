@@ -75,7 +75,7 @@ function RePieChart() {
             outerRadius={80}
             label
           >
-            {chartData.map((entry, index) => (
+            {chartData?.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
@@ -86,7 +86,7 @@ function RePieChart() {
         </PieChart>
       </ResponsiveContainer>
       <div className="categories-names">
-        {data.map((category, index) => (
+        {data?.map((category, index) => (
           <span key={index} style={{ color: COLORS[index] }}>
             {category.name}
           </span>

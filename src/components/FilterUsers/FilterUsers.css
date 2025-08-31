@@ -25,14 +25,9 @@
 
 .users .filter-users .select-container select {
   min-width: 200px;
-  background-color: white;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid var(--very-dark);
+  border-width: 2px;
 }
 
-.dark .users .filter-users input,
 .dark .users .filter-users .select-container select {
-  background-color: var(--dark-bg);
   color: var(--very-light);
 }

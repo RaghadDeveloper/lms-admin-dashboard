@@ -21,7 +21,9 @@ function UsersTableRow({ profile }) {
       <div className="user-img">
         <img src={profile.avatar_url} alt="user img" />
       </div>
-      <p className="role">{profile.role}</p>
+      <p className="role">
+        {profile.role === "teacher" ? "Instructor" : "Student"}
+      </p>
       <p className="email">{profile.email}</p>
       <p className="birth-date">
         {profile?.birth_date ? formatDate(profile?.birth_date) : "undefiend"}

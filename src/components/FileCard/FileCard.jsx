@@ -17,7 +17,7 @@ function FileCard({ file }) {
       <img src={file.image_pdf_url} alt="PDF preview" />
       <div className="file-details">
         <h4>{file.title}</h4>
-        <p>20 pages</p>
+        {/* <p>20 pages</p> */}
       </div>
     </div>
   );

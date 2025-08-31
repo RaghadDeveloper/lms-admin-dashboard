@@ -6,7 +6,7 @@ export const headers = {
       </>
     ),
     description:
-      "Welcome back, Instructor! Log in to manage your courses and connect with your students.",
+      "Welcome back, Admin! Log in to manage the platform, monitor activity, and oversee users and content.",
   },
 
   signup: {

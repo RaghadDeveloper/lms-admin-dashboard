@@ -5,6 +5,10 @@
   background-color: white;
 }
 
+.dark .user-row {
+  background-color: var(--dark-bg);
+}
+
 .dark .user-row p,
 .dark .user-row button {
   color: var(--very-light);
@@ -44,7 +48,7 @@
 
 .user-row .role {
   padding: 0.5rem 1rem;
-  width: 5rem;
+  width: 7rem;
 }
 
 .user-row .email {
