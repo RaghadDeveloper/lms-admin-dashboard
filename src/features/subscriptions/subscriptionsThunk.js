@@ -14,7 +14,6 @@ export const getSubscriptions = createAsyncThunk(
   async (date, thunkAPI) => {
     try {
       const response = await getSubscriptionsApi(date);
-      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(extractError(error));

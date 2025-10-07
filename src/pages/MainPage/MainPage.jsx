@@ -27,7 +27,7 @@ function MainPage() {
     dispatch(getProfile());
 
     dispatch(coursesStatistics(2025));
-    dispatch(categoriesStatistics(""));
+    dispatch(categoriesStatistics(2025));
     dispatch(earningsStatistics(2025));
     dispatch(teachersStatistics(2025));
     dispatch(studentsStatistics(2025));

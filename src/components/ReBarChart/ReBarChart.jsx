@@ -29,7 +29,7 @@ const COLORS = [
 
 function ReBarChart() {
   const { categories } = useSelector((state) => state.statistics);
-  const [year, setYear] = useState("");
+  const [year, setYear] = useState("2025");
   const [data, setData] = useState(categories);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function ReBarChart() {
       <div className="header">
         <h4>Popular Categories</h4>
         <select value={year} onChange={(e) => setYear(e.target.value)}>
-          <option value=" ">Select year</option>
+          <option value=" ">All years</option>
           <option value="2025">2025</option>
           <option value="2024">2024</option>
           <option value="2023">2023</option>

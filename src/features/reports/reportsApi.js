@@ -1,4 +1,4 @@
-import axiosInstance from "../../../../lms-instructor-portal/src/api/axiosInstance";
+import axiosInstance from "../../api/axiosInstance";
 
 export const getAllReportsApi = () => axiosInstance.get("/reports");
 
